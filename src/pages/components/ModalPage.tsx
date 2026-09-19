@@ -81,6 +81,7 @@ const [outlineModal, setOutlineModal] = useState(false);
           >
             Light Modal
           </Button>
+          
           <Modal
             variant="light"
             size="sm"

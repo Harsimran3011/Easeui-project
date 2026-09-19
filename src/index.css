@@ -16,7 +16,31 @@
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
-  transition: background-color 0.25s, color 0.25s;
+  transition:
+    background-color 0.25s,
+    color 0.25s;
+  user-select: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.swiper {
+  width: 80%;
+  height: 100px;
+  padding: 50px;
+}
+
+.slidePerView {
+  height: 100px;
+  text-align: center;
+}
+
+.cssView {
+  height: 100px;
+  width: 80%;
+  text-align: center;
 }
 
 @keyframes fadeIn {

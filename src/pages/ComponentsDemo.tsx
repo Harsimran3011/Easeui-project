@@ -15,9 +15,13 @@ const ComponentDemo = ({ children, code }: ComponentDemoProps) => {
   const themeMode = useSelector((store: RootState) => store.theme);
 
   return (
-    <div className={`border border-gray-200 rounded-lg overflow-hidden shadow-sm ${themeMode.mode === "light" ? "bg-gray-200" : "bg-gray-900"}`}>
-      <div className={`flex items-center justify-between px-4 py-2 border-b ${themeMode.mode === "light" ? "border-gray-200 bg-gray-50" : "border-gray-200 bg-gray-500"}`} >
-        <span className="text-sm font-medium text-gray-700">Preview</span>
+    <div
+      className={` cursor-pointer rounded-lg overflow-hidden shadow-sm ${themeMode.mode === "light" ? "bg-gray-200 border border-gray-200" : "bg-[#222] border border-none"}`}
+    >
+      <div
+        className={`flex items-center justify-between cursor-pointer px-4 py-2 border-b ${themeMode.mode === "light" ? "border-gray-100 bg-gray-50" : " bg-gray-500"}`}
+      >
+        <span className={`text-sm font-medium ${themeMode.mode === "light" ? "text-gray-700" : "text-white"}`}>Preview</span>
         <button
           onClick={() => setIsCodeVisible(!isCodeVisible)}
           className="flex items-center gap-1 px-3 py-1 text-sm bg-gray-100 hover:bg-gray-200 rounded transition-colors"
@@ -27,7 +31,7 @@ const ComponentDemo = ({ children, code }: ComponentDemoProps) => {
         </button>
       </div>
 
-      <div className="py-20 px-4 flex items-center justify-center">
+      <div className="py-10 flex items-center justify-center">
         {children}
       </div>
 

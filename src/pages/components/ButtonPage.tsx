@@ -2,6 +2,8 @@
 import { Button } from "@/components/Button/Button";
 import ComponentDemo from "../ComponentsDemo";
 import PropsTable from "@/components/Personal/PropsTable";
+import { useSelector } from "react-redux";
+import type { RootState } from "@/store/Store";
 
 const ButtonPage = () => {
   const basicUsageCode = `
@@ -39,6 +41,8 @@ import { Button } from "@/components/Button/Button"
     },
   ];
 
+  const themeMode = useSelector((store: RootState) => store.theme);
+
   return (
     <div className="max-w-4xl mx-auto p-6 space-y-12">
       <header className="space-y-2">
@@ -54,7 +58,11 @@ import { Button } from "@/components/Button/Button"
       </header>
 
       <section className="space-y-4">
-        <h2 className="text-2xl font-semibold">Usage</h2>
+        <h2
+          className={`text-2xl font-semibold ${themeMode.mode === "light" ? `text-black` : `text-white`}`}
+        >
+          Usage
+        </h2>
         <ComponentDemo code={basicUsageCode}>
           <div className="flex gap-4 flex-wrap">
             <Button
@@ -69,7 +77,7 @@ import { Button } from "@/components/Button/Button"
               animation="slideUp"
               variant="secondary"
               hoverAnimation="bounce"
-              size="lg"
+              size="full"
             >
               Bounce
             </Button>

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router";
 import { Menu } from "lucide-react";
+import { useSelector } from "react-redux";
+import type { RootState } from "@/store/Store";
 
 type Props = {};
 
@@ -9,6 +11,8 @@ const ComponentLayout = ({}: Props) => {
   console.log(location);
   const navigate = useNavigate();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const themeMode = useSelector((store: RootState) => store.theme);
 
   const components = [
     "Button",
@@ -33,7 +37,7 @@ const ComponentLayout = ({}: Props) => {
           md:translate-x-0
         `}
       >
-        <h2 className="text-md font-bold mb-6">Components</h2>
+        <h2 className={`${themeMode.mode === "light" ? `text-md font-bold mb-6 text-black` : `text-md font-bold mb-6 text-white` }`}>Components</h2>
         <ul className="flex flex-col gap-2">
           {components.map((item) => (
             <li
